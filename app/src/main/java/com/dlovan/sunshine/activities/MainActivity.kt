@@ -6,6 +6,7 @@ import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import com.dlovan.sunshine.R
 import com.dlovan.sunshine.adapters.ForecastListAdapter
+import org.jetbrains.anko.find
 
 /**
  * this is the main Activity that will show the list of 7 days forecast of Erbil City
@@ -29,7 +30,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         //setup the recyclerView and Adapter to show forecast list
-        val forecastList = findViewById<RecyclerView>(R.id.forecast_list)
+        val forecastList = find<RecyclerView>(R.id.forecast_list)
         forecastList.layoutManager = LinearLayoutManager(this)
         forecastList.adapter = ForecastListAdapter(items)
     }
