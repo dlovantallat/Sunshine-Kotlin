@@ -1,12 +1,16 @@
-package com.dlovan.sunshine.activities
+package com.dlovan.sunshine.ui.activities
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import com.dlovan.sunshine.R
-import com.dlovan.sunshine.adapters.ForecastListAdapter
+import com.dlovan.sunshine.data.Request
+import com.dlovan.sunshine.ui.adapters.ForecastListAdapter
+import org.jetbrains.anko.doAsync
 import org.jetbrains.anko.find
+import org.jetbrains.anko.longToast
+import org.jetbrains.anko.uiThread
 
 /**
  * this is the main Activity that will show the list of 7 days forecast of Erbil City
@@ -33,5 +37,14 @@ class MainActivity : AppCompatActivity() {
         val forecastList = find<RecyclerView>(R.id.forecast_list)
         forecastList.layoutManager = LinearLayoutManager(this)
         forecastList.adapter = ForecastListAdapter(items)
+
+        val url = "http://api.openweathermap.org/data/2.5/forecast/daily?" +
+                "APPID=2a486e1c13c859a58987ddcc74979016&q=erbil&mode=json&units=metric&cnt=7"
+
+        //this method will let to return to main thread by calling the uiThread
+        doAsync {
+            Request(url).run()
+            uiThread { longToast("Request performed") }
+        }
     }
 }

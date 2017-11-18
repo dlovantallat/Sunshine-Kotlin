@@ -1,4 +1,4 @@
-package com.dlovan.sunshine.adapters
+package com.dlovan.sunshine.ui.adapters
 
 import android.support.v7.widget.RecyclerView
 import android.view.ViewGroup
