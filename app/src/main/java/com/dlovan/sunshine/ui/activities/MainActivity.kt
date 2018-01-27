@@ -24,7 +24,7 @@ class MainActivity : AppCompatActivity() {
 
         //setup the recyclerView and Adapter to show forecast list
         val forecastList = find<RecyclerView>(R.id.forecast_list)
-        forecastList.layoutManager = LinearLayoutManager(this)
+        forecastList.layoutManager = LinearLayoutManager(applicationContext)
 
         //this method will let to return to main thread by calling the uiThread
         doAsync {
