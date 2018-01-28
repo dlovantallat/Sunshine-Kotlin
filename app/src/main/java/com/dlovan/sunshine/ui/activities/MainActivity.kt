@@ -6,7 +6,6 @@ import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import com.dlovan.sunshine.R
 import com.dlovan.sunshine.domain.commands.RequestForecastCommand
-import com.dlovan.sunshine.domain.model.Forecast
 import com.dlovan.sunshine.ui.adapters.ForecastListAdapter
 import org.jetbrains.anko.doAsync
 import org.jetbrains.anko.find
@@ -32,11 +31,7 @@ class MainActivity : AppCompatActivity() {
         doAsync {
             val result = RequestForecastCommand("erbil").execute()
             uiThread {
-                forecastList.adapter = ForecastListAdapter(result, object : ForecastListAdapter.OnItemClickListener {
-                    override fun invoke(forecast: Forecast) {
-                        toast(forecast.description)
-                    }
-                })
+                forecastList.adapter = ForecastListAdapter(result) { toast(it.description) }
             }
         }
     }
