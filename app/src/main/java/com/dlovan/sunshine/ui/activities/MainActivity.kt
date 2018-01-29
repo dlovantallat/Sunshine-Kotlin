@@ -3,12 +3,11 @@ package com.dlovan.sunshine.ui.activities
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.RecyclerView
 import com.dlovan.sunshine.R
 import com.dlovan.sunshine.domain.commands.RequestForecastCommand
 import com.dlovan.sunshine.ui.adapters.ForecastListAdapter
+import kotlinx.android.synthetic.main.activity_main.*
 import org.jetbrains.anko.doAsync
-import org.jetbrains.anko.find
 import org.jetbrains.anko.toast
 import org.jetbrains.anko.uiThread
 
@@ -23,9 +22,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        //setup the recyclerView and Adapter to show forecast list
-        val forecastList = find<RecyclerView>(R.id.forecast_list)
-        forecastList.layoutManager = LinearLayoutManager(applicationContext)
+        forecastList.layoutManager = LinearLayoutManager(this)
 
         //this method will let to return to main thread by calling the uiThread
         doAsync {
