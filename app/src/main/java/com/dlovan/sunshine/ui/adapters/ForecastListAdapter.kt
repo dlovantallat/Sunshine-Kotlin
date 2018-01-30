@@ -7,9 +7,11 @@ import android.view.ViewGroup
 import com.dlovan.sunshine.R
 import com.dlovan.sunshine.domain.model.Forecast
 import com.dlovan.sunshine.domain.model.ForecastList
-import com.dlovan.sunshine.ui.utils.ctx
+import com.dlovan.sunshine.extensions.ctx
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.item_forecast.view.*
+import java.text.DateFormat
+import java.util.*
 
 /**
  * the Adapter for list of 7 days forecast
@@ -36,12 +38,17 @@ class ForecastListAdapter(private val weekForecast: ForecastList, private val it
         fun bindForecast(forecast: Forecast) {
             with(forecast) {
                 Picasso.with(itemView.ctx).load(iconUrl).into(itemView.icon)
-                itemView.date.text = date
+                itemView.date.text = convertDate(date)
                 itemView.description.text = description
                 itemView.maxTemperature.text = "$high"
                 itemView.minTemperature.text = "$low"
                 itemView.setOnClickListener { itemClick(this) }
             }
+        }
+
+        private fun convertDate(date: Long): String {
+            val df = DateFormat.getDateInstance(DateFormat.MEDIUM, Locale.getDefault())
+            return df.format(date)
         }
     }
 }

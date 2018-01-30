@@ -1,4 +1,4 @@
-package com.dlovan.sunshine.data
+package com.dlovan.sunshine.data.server
 
 /**
  * this is the Data Class

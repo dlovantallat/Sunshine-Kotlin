@@ -1,7 +1,7 @@
 package com.dlovan.sunshine.ui
 
 import android.app.Application
-import com.dlovan.sunshine.ui.utils.DelegatesExt
+import com.dlovan.sunshine.extensions.DelegatesExt
 
 /**
  * Application Singleton

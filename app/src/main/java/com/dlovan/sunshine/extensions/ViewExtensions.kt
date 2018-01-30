@@ -1,4 +1,4 @@
-package com.dlovan.sunshine.ui.utils
+package com.dlovan.sunshine.extensions
 
 import android.content.Context
 import android.view.View

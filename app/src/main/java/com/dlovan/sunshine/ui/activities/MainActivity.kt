@@ -26,9 +26,9 @@ class MainActivity : AppCompatActivity() {
 
         //this method will let to return to main thread by calling the uiThread
         doAsync {
-            val result = RequestForecastCommand("erbil").execute()
+            val result = RequestForecastCommand(94043).execute()
             uiThread {
-                forecastList.adapter = ForecastListAdapter(result) { toast(it.description) }
+                forecastList.adapter = ForecastListAdapter(result, { toast(it.description) })
             }
         }
     }

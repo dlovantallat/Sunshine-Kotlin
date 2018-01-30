@@ -1,4 +1,4 @@
-package com.dlovan.sunshine.ui.utils
+package com.dlovan.sunshine.extensions
 
 /**
  * Created by dlovan on 1/30/18.
