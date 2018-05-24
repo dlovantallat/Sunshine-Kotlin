@@ -2,6 +2,7 @@ package com.dlovan.sunshine.ui
 
 import android.app.Application
 import com.dlovan.sunshine.extensions.DelegatesExt
+import com.facebook.stetho.Stetho
 
 /**
  * Application Singleton
@@ -17,5 +18,8 @@ class App : Application() {
     override fun onCreate() {
         super.onCreate()
         instance = this
+
+        //this is to show the database in the google chrome
+        Stetho.initializeWithDefaults(instance)
     }
 }
